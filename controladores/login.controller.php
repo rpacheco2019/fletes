@@ -22,6 +22,7 @@ if($_POST){
     /* EVALUAMOS SI EXISTE EL USUARIO PARA CARGAR VARIABLE DE SESION */
     if(!empty($resultado)){
         $_SESSION['user'] = $resultado['user'];
+        $_SESSION['type'] = $resultado['type'];
         header('Location:registro.controller.php');
     }else{
         header('Location:login.controller.php');//SI NO EXISTE, MANDAMOS DE NUEVO A LOGIN
