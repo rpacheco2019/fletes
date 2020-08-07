@@ -29,7 +29,7 @@
 <body>
 <form action="../controladores/registro.controller.php" method="POST">
 <div class="container border text-center">
-    <h3 class="mt-3 mb-1">Registro de folio Easy Planner para flete y montaje</h3>
+    <h3 class="mt-3 mb-1">Registro Presupuesto Flete y Montaje</h3>
         <p class="mt-2 mr-2 d-inline">Sesión: <?php echo $_SESSION['user'];?></p><a href="../controladores/destroy.controller.php">Cerrar sesión</a>
         <div class="row mt-2">
             <div class="col-lg">Folio Easy Planner:</div>
