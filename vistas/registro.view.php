@@ -46,6 +46,11 @@
         <div class="col-lg"><input type="number" min=0 placeholder="MXN" name="montaje"></div>
     </div>
 
+    <div class="row my-4">
+        <div class="col-lg-3">Código Planner: </div>
+        <div class="col-lg-3"><input type="text" min=0 placeholder="" name="codigo"></div>
+    </div>
+
     <input type="submit" value="Guardar registro" class="btn btn-success mt-3 mb-5">
     <hr>
     <table class="table text-left" id="table1">
@@ -53,6 +58,7 @@
             <h5>Mis folios registrados</h5>
             <tr>
                 <th>Folio</th>
+                <th>Cod. P1</th>
                 <th>Fecha de evento</th>
                 <th>Flete</th>
                 <th>Montaje</th>
@@ -65,6 +71,7 @@
             foreach ($resultados as $fila) {
                 echo "<tr>";
                     echo "<td>".$fila['folio']."</td>";
+                    echo "<td>".$fila['cod']."</td>";
                     echo "<td>".$fila['fechaEvento']."</td>";
                     echo "<td>".$fila['flete']."</td>";
                     echo "<td>".$fila['montaje']."</td>";
