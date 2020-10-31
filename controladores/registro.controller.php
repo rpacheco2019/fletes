@@ -25,10 +25,10 @@ if($_POST){//SI VENIMOS DE POST
     if($_SESSION['type'] == 'user'){
         $user = $_SESSION['user'];
         $resultados = getRegistrosByUser($user);
-        require("../vistas/registro.view.php");
+        require("../vistas/registro.view2.php");
     }else{
         $resultados = getRegistros();
-        require("../vistas/registro.view.php");
+        require("../vistas/registro.view2.php");
     }
     
 }
