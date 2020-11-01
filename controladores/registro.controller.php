@@ -9,17 +9,7 @@ if(!$_SESSION['user']){
 
 if($_POST){//SI VENIMOS DE POST
 
-    /* CICLAMOS EL FORM SI VIENEN CAMPOS VACIOS */
-    if (empty($_POST['folio']) || empty($_POST['fecha']) || empty($_POST['flete']) || empty($_POST['montaje'])) {
-        header('Location:registro.controller.php');
-        die();
-    } 
-
-    /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
-    require("../modelos/modelo.php");
-    InsertarFolio($_POST['folio'],$_POST['fecha'],$_POST['flete'],$_POST['montaje'],$_SESSION['user'],$_POST['codigo']);
-    header('Location:registro.controller.php');//AL TERMINAR MANDAMOS A LA MISMA PAGINA
-
+    
 }else{// SI NO VIENE DE POST , CONSULTAMOS TODOS SUS REGISTROS QUE COINCIDAN CON LA VARIABLE DE SESION USER
     require("../modelos/modelo.php");
     if($_SESSION['type'] == 'user'){

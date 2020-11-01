@@ -111,7 +111,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ver registros</h1>
+            <h1>Nuevo registro</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -123,64 +123,45 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <form action="../controladores/NuevoRegistro.controller.php" method="POST">
+
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-12">
-          
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">La tabla se ordena por los registros mas nuevos.</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="table-responsive">
-                <table id="example2" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Folio</th>
-                      <th>Cod. P1</th>
-                      <th>Fecha de evento</th>
-                      <th>Flete MXN</th>
-                      <th>Montaje MXN</th>
-                      <th>Owner</th>
-                      <th>Subido</th>
-                    </tr>
-                  </thead>
+          <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Por favor llene los datos del formulario:</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                <div class="container border text-center">
+                          <div class="row mt-2">
+                              <div class="col-lg">Folio Easy Planner:</div>
+                              <div class="col-lg"><input type="number" min=0 name="folio"></div>
+                              <div class="col-lg">Fecha del evento: </div>
+                              <div class="col-lg"><input type="date" placeholder="D/M/A" name="fecha"></div>
+                          </div>
 
-                  <tbody>
-                      <?php //Construcción de tabla desde get_allitems - Archivo de funciones devuelve $datos	que pasamos a $resultados
-                          foreach ($resultados as $fila) {
-                              echo "<tr>";
-                                  echo "<td>".$fila['folio']."</td>";
-                                  echo "<td>".$fila['cod']."</td>";
-                                  echo "<td>".$fila['fechaEvento']."</td>";
-                                  echo "<td>$".$fila['flete']."</td>";
-                                  echo "<td>$".$fila['montaje']."</td>";
-                                  echo "<td>".$fila['user']."</td>";
-                                  echo "<td>".$fila['stamp']."</td>";
-                              echo "</tr>";	
-                          }//fin del foreach
-                      ?>	<!-- Fin de la ejecucion en PHP -->
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                      <th>Folio</th>
-                      <th>Cod. P1</th>
-                      <th>Fecha de evento</th>
-                      <th>Flete</th>
-                      <th>Montaje</th>
-                      <th>Owner</th>
-                      <th>Subido</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- Div table responsive -->
+                          <div class="row my-4">
+                              <div class="col-lg">Presupuesto para Flete: </div>
+                              <div class="col-lg"><input type="number" min=0 placeholder="MXN" name="flete"></div>
+                              <div class="col-lg">Presupuesto para Montaje: </div>
+                              <div class="col-lg"><input type="number" min=0 placeholder="MXN" name="montaje"></div>
+                          </div>
+
+                          <div class="row my-4">
+                              <div class="col-lg-3">Código Planner: </div>
+                              <div class="col-lg-3"><input type="text" min=0 placeholder="" name="codigo"></div>
+                          </div>
+
+                          <input type="submit" value="Guardar registro" class="btn btn-success mt-3 mb-5">
+                          <hr>
+                    </div> 
+                </div>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+            <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -189,6 +170,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  </form>
+  
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0.0 Alpha
