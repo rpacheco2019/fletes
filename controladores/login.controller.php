@@ -29,7 +29,7 @@ if($_POST){
         die();
     }
 }else{//SI NO VENIMOS DE POST, LLAMAMOS LA VISTA
-    require("../vistas/login.view.php");
+    require("../vistas/login-v2.view.html");
 }
 
 ?>
