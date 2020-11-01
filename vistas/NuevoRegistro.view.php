@@ -138,7 +138,7 @@
                 <div class="container border text-center">
                           <div class="row mt-2">
                               <div class="col-lg">Folio Easy Planner:</div>
-                              <div class="col-lg"><input type="number" min=0 name="folio"></div>
+                              <div class="col-lg"><input type="number" min=0 name="folio" onkeyup="success()" id="key"></div>
                               <div class="col-lg">Fecha del evento: </div>
                               <div class="col-lg"><input type="date" placeholder="D/M/A" name="fecha"></div>
                           </div>
@@ -155,7 +155,7 @@
                               <div class="col-lg-3"><input type="text" min=0 placeholder="" name="codigo"></div>
                           </div>
 
-                          <input type="submit" value="Guardar registro" class="btn btn-success mt-3 mb-5">
+                          <input type="submit" id="button" value="Guardar registro" class="btn btn-success mt-3 mb-5">
                           <hr>
                     </div> 
                 </div>
@@ -226,6 +226,21 @@
             buttons: ['copy', 'csv', 'excel']
     });
   });
+
+    window.onload = function(){
+    document.getElementById("key").value = "";
+    document.getElementById('button').disabled = true;
+    }
+
+  function success() {
+	 if(document.getElementById("key").value==="") { 
+            document.getElementById('button').disabled = true; 
+        } else { 
+            document.getElementById('button').disabled = false;
+        }
+    }
+
+   
 </script>
 </body>
 </html>
