@@ -21,7 +21,7 @@ if($_POST){//SI VENIMOS DE POST
     header('Location:registro.controller.php');//AL TERMINAR MANDAMOS A LA MISMA PAGINA
 
 }else{// SI NO VIENE DE POST , LE MOSTRAMOS EL FORMULARIO DE CAPTURA
-        require("../vistas/NuevoRegistro.view.php");
+        require("../vistas/views/nuevoRegistro.view.php");
 }
 
 ?>
