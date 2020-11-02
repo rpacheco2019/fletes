@@ -42,7 +42,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <div class="container border text-center">
+                <div class="container">
                           <div class="row mt-2">
                               <div class="col-lg">Folio Easy Planner:</div>
                               <div class="col-lg"><input type="number" class="form-control" min=0 name="folio" onkeyup="success()" id="key"></div>

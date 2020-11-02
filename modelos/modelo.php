@@ -1,12 +1,19 @@
 <?php
 
+$nombreBase = "fletes";
+$usuarioBase = "root";
+$passwordBase = "";
+
 function getRegistros(){
+
+   global $nombreBase;
+   global $usuarioBase;
+   global $passwordBase;
 
     try {
 
-         
         /* DB Info */
-        $conn = new PDO('mysql:host=localhost;dbname=fletes','root','');
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         
         /* SQL Qry */
 		$statement = $conn->prepare("SELECT * FROM registros");
@@ -23,11 +30,15 @@ function getRegistros(){
 
 function getRegistrosByUser($user){
 
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
     try {
 
          
         /* DB Info */
-        $conn = new PDO('mysql:host=localhost;dbname=fletes','root','');
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         
         /* SQL Qry */
 		$statement = $conn->prepare("SELECT * FROM registros where user='$user'");
@@ -45,11 +56,15 @@ function getRegistrosByUser($user){
 
 function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod){
 
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
     try {
 
          
         /* DB Info */
-        $conn = new PDO('mysql:host=localhost;dbname=fletes','root','');
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         
         /* SQL Qry */
 		$statement = $conn->prepare("INSERT INTO registros (folio,fechaEvento,flete,montaje,user,cod)
@@ -65,11 +80,15 @@ function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod){
 
 function login($usuario,$password){
 
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
     try {
 
          
         /* DB Info */
-        $conn = new PDO('mysql:host=localhost;dbname=fletes','root','');
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         
         /* SQL Qry */
 		$statement = $conn->prepare("SELECT * FROM usuarios where user='$usuario' and pass='$password'");
@@ -85,5 +104,9 @@ function login($usuario,$password){
 
 
 }
+
+/* Este Qry es el select distinc para sacar el registro mas nuevo de cada vendedora de forma automatica
+SELECT DISTINCT registros.folio AS newfolio,cod,fechaEvento,flete,montaje,USER,max(stamp) FROM registros GROUP BY stamp DESC;
+*/
 
 ?>
