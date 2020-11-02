@@ -24,6 +24,13 @@
     <div class="card-body">
       <p class="login-box-msg">Inicia tu sesión:</p>
 
+      <?php 
+        if (isset($_GET['error'])) {
+          echo "<p class='alert alert-danger'>".@$_GET['error']."</p>";
+        }
+      ?>
+      
+
       <form action="../controladores/login.controller.php" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="user" placeholder="ejemplo: rpacheco">

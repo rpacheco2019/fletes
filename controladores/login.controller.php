@@ -25,8 +25,9 @@ if($_POST){
         $_SESSION['type'] = $resultado['type'];
         header('Location:registro.controller.php');
     }else{
-        header('Location:login.controller.php');//SI NO EXISTE, MANDAMOS DE NUEVO A LOGIN
-        die();
+        $error = "Usuario o password incorrectos";
+        header('Location:login.controller.php?error='.$error);//SI NO EXISTE, MANDAMOS DE NUEVO A LOGIN
+        /* die(); */
     }
 }else{//SI NO VENIMOS DE POST, LLAMAMOS LA VISTA
     require("../vistas/views/login.view.php");
