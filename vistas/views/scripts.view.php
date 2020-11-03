@@ -21,7 +21,7 @@
 
 <script>
   $(function () {
-    /* $("#example1").DataTable(); */
+    /* Tabla Registros FYM*/
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -35,13 +35,31 @@
             pageLength : 10,
             buttons: ['copy', 'csv', 'excel']
     });
+
+    /* Tabla de registros Pagos */
+    $('#pagos').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      /* Esto es para agregar los botones y el orden de mas nuevo a viejo en registros */
+      dom: 'Bfrtip',
+            order: [[ 6, "desc" ]],
+            pageLength : 10,
+            buttons: ['copy', 'csv', 'excel']
+    });
+
   });
 
-  window.onload = function(){
+    /* Script de prueba para bloque de boton en mandar nuevo FYM */
+    window.onload = function(){
     document.getElementById("key").value = "";
     document.getElementById('button').disabled = true;
     }
 
+    /* Habilita el boton enviar en el formulario de nuevo reg. FYM */
   function success() {
 	 if(document.getElementById("key").value==="") { 
             document.getElementById('button').disabled = true; 

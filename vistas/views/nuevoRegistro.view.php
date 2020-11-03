@@ -52,9 +52,9 @@
 
                           <div class="row my-4">
                               <div class="col-lg">Presupuesto para Flete: </div>
-                              <div class="col-lg"><input type="number" class="form-control" min=0 placeholder="MXN" name="flete"></div>
+                              <div class="col-lg"><input type="number" class="form-control" min=0 placeholder="MXN" name="flete" required=""></div>
                               <div class="col-lg">Presupuesto para Montaje: </div>
-                              <div class="col-lg"><input type="number" class="form-control" min=0 placeholder="MXN" name="montaje"></div>
+                              <div class="col-lg"><input type="number" class="form-control" min=0 placeholder="MXN" name="montaje" required=""></div>
                           </div>
 
                           <div class="row my-4">
