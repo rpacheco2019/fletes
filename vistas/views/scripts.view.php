@@ -46,7 +46,7 @@
       "autoWidth": false,
       /* Esto es para agregar los botones y el orden de mas nuevo a viejo en registros */
       dom: 'Bfrtip',
-            order: [[ 6, "desc" ]],
+            order: [[ 0, "desc" ]],
             pageLength : 10,
             buttons: ['copy', 'csv', 'excel']
     });

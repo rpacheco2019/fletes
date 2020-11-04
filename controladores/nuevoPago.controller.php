@@ -17,7 +17,7 @@ if($_POST){//SI VENIMOS DE POST
 
     /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
     require("../modelos/modelo.php");
-    guardarPago($_POST['numFactura'],$_POST['fechaFactura'],$_POST['proveedor'],$_POST['valor'],$_POST['concepto'],$_SESSION['user']);
+    guardarPago($_POST['numFactura'],$_POST['estado'],$_POST['fechaFactura'],$_POST['proveedor'],$_POST['valor'],$_POST['concepto'],$_SESSION['user']);
     
     //AL TERMINAR MANDAMOS A LA TABLA DE REGISTROS
     header('Location:pagos.controller.php');

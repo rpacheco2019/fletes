@@ -43,7 +43,8 @@
                 <table id="pagos" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Orden</th>
+                      <th>Folio</th>
+                      <th>Estado</th>
                       <th>Factura</th>
                       <th>Fecha F.</th>
                       <th>Proveedor</th>
@@ -58,6 +59,7 @@
                           foreach ($resultados as $fila) {
                               echo "<tr>";
                                   echo "<td>".$fila['id']."</td>";
+                                  echo "<td><span class='badge bg-success'>".$fila['estado']."</span></td>";
                                   echo "<td>".$fila['numeroFactura']."</td>";
                                   echo "<td>".$fila['fechaFactura']."</td>";
                                   echo "<td>".$fila['proveedor']."</td>";
@@ -70,7 +72,8 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                      <th>Orden</th>
+                      <th>Folio</th>
+                      <th>Estado</th>
                       <th>Factura</th>
                       <th>Fecha F.</th>
                       <th>Proveedor</th>

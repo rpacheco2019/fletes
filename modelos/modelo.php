@@ -106,7 +106,7 @@ function login($usuario,$password){
 }
 
 
-function guardarPago($numFactura,$fechaFactura,$proveedor,$valor,$concepto,$user){
+function guardarPago($numFactura,$estado,$fechaFactura,$proveedor,$valor,$concepto,$user){
 
     global $nombreBase;
     global $usuarioBase;
@@ -119,8 +119,8 @@ function guardarPago($numFactura,$fechaFactura,$proveedor,$valor,$concepto,$user
         $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /* SQL Qry */
-		$statement = $conn->prepare("INSERT INTO pagoproveedor (numeroFactura,fechaFactura,proveedor,totalFactura,concepto,creadoPor)
-        VALUES('$numFactura','$fechaFactura','$proveedor',$valor,'$concepto','$user') ");
+		$statement = $conn->prepare("INSERT INTO pagoproveedor (numeroFactura,estado,fechaFactura,proveedor,totalFactura,concepto,creadoPor)
+        VALUES('$numFactura','$estado','$fechaFactura','$proveedor',$valor,'$concepto','$user') ");
         
         /* Execute */
         $statement->execute();

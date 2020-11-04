@@ -71,8 +71,18 @@
                         <label class="col-md-4 control-label" for="proveedor">Proveedor</label>
                         <div class="col-md-4">
                           <select id="proveedor" name="proveedor" class="form-control">
-                            <option value="1">Proveedor 1</option>
-                            <option value="2">Proveedor 2</option>
+                            <option value="Abasteo MX">Abasteo MX</option>
+                            <option value="Office Max">Office Max</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- estado del pp -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="estado">Estado</label>
+                        <div class="col-md-4">
+                          <select id="estado" name="estado" class="form-control">
+                            <option value="Pendiente">Pendiente</option>
                           </select>
                         </div>
                       </div>
