@@ -156,6 +156,30 @@ function registroPago(){
 	}
 }
 
+function getDetallePP($id){
+
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
+    try {
+
+        /* DB Info */
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        /* SQL Qry */
+		$statement = $conn->prepare("SELECT * FROM pagoproveedor WHERE id=".$id."");
+        
+        /* Execute */
+        $statement->execute();
+        $datos = $statement->fetch();
+        return $datos;
+        
+	} catch (PDOException $e) {
+		echo "Error Try Mysql: ".$e->getMessage();
+	}
+
+}
 
 /* Este Qry es el select distinc para sacar el registro mas nuevo de cada vendedora de forma automatica
 SELECT DISTINCT registros.folio AS newfolio,cod,fechaEvento,flete,montaje,USER,max(stamp) FROM registros GROUP BY stamp DESC;
