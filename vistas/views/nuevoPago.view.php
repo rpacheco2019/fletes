@@ -87,12 +87,32 @@
                         </div>
                       </div>
 
+                      <!-- Tipo de PP ADM/EVENTO -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="tipo">Tipo</label>
+                        <div class="col-md-4">
+                          <select id="tipo" name="tipo" class="form-control">
+                            <option value="Administrativo">Administrativo</option>
+                            <option value="Evento">Evento</option>
+                          </select>
+                        </div>
+                      </div>
+
                       <!-- Valor factura-->
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="valor">Total de la factura sin IVA</label>  
                         <div class="col-md-4">
                         <input id="valor" name="valor" type="number" placeholder="" class="form-control input-md" required="">
                         <span class="help-block">Sin IVA</span>  
+                        </div>
+                      </div>
+
+                      <!-- Promesa de pago-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="promesaPago">Promesa de pago</label>  
+                        <div class="col-md-4">
+                        <input id="promesaPago" name="promesaPago" type="date" placeholder="" class="form-control input-md" required="">
+                        <span class="help-block">Fecha impresa en la factura</span>  
                         </div>
                       </div>
 

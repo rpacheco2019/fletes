@@ -45,7 +45,7 @@
         <!-- Tarjeta de informacion del pago a proveedor -->
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title badge bg-primary">Informacion del pago a proveedor: <?php echo $resultados['concepto'];?></h3>
+              <h3 class="card-title badge bg-primary">Informacion del pago a proveedor: <?php echo $resultados['tipo'];?></h3>
             </div>
             <!-- /.card-header -->
 
@@ -56,6 +56,9 @@
                   </div>
                   <div class="col-lg">
                     <p>Fecha de la factura: <?php echo $resultados['fechaFactura'];?></p>
+                  </div>
+                  <div class="col-lg">
+                    <p>Promesa: <?php echo $resultados['fechaPromesa'];?></p>
                   </div>
                   <div class="col-lg">
                     <p>Proveedor: <?php echo $resultados['proveedor'];?></p>
@@ -129,12 +132,10 @@
                 <table id="pagos" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Folio</th>
-                      <th>Estado</th>
-                      <th>Factura</th>
-                      <th>Fecha F.</th>
-                      <th>Proveedor</th>
-                      <th>Total</th>
+                      <th>ID</th>
+                      <th>Folio EP</th>
+                      <th>Cod. Planner</th>
+                      <th>Valor Asignado</th>
                       <th>Owner</th>
                       <th>Alta</th>
                     </tr>
@@ -158,12 +159,10 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                      <th>Folio</th>
-                      <th>Estado</th>
-                      <th>Factura</th>
-                      <th>Fecha F.</th>
-                      <th>Proveedor</th>
-                      <th>Total</th>
+                      <th>ID</th>
+                      <th>Folio EP</th>
+                      <th>Cod. Planner</th>
+                      <th>Valor Asignado</th>
                       <th>Owner</th>
                       <th>Alta</th>
                   </tr>
