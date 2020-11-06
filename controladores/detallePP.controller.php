@@ -12,10 +12,12 @@ require("../modelos/modelo.php");
         $user = $_SESSION['user'];
         $id = $_GET['id'];
         $resultados = getDetallePP($id);
+        $resultadosEventoPP = getEventoPP($id);
         require("../vistas/views/detallePP.view.php");
     }else{
         $id = $_GET['id'];
         $resultados = getDetallePP($id);
+        $resultadosEventoPP = getEventoPP($id);
         require("../vistas/views/detallePP.view.php");
     }
 

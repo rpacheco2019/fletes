@@ -22,11 +22,7 @@
                 echo " - ".$resultados['numeroFactura'];
                 ?>
               </h1>
-              <h5><span class="badge bg-success">
-                Estado:
-                <?php echo " ".$resultados['estado'];
-                ?>
-              </span></h5>
+              <h5>Estado: <?php echo " ".$resultados['estado'];?></h5>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -45,7 +41,7 @@
         <!-- Tarjeta de informacion del pago a proveedor -->
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title badge bg-primary">Informacion del pago a proveedor: <?php echo $resultados['tipo'];?></h3>
+              <h3 class="card-title">Informacion del pago a proveedor: <?php echo $resultados['tipo'];?></h3>
             </div>
             <!-- /.card-header -->
 
@@ -124,10 +120,16 @@
           <!-- Tarjeta de tabla de registros -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Asignacion de gasto a Evento:</h3>
+              <h3 class="card-title mt-2">Asignacion de gasto a Evento:</h3>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#exampleModal">
+                  Agregar asignacion
+                </button>
+                <?php require("modalGastoPP.view.php");?>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                
               <div class="table-responsive">
                 <table id="pagos" class="table table-bordered table-striped">
                   <thead>
@@ -143,17 +145,17 @@
 
                   <tbody>
                       <?php //Construcción de tabla desde get_allitems - Archivo de funciones devuelve $datos	que pasamos a $resultados
-                          foreach ($resultados as $fila) {
-                              /* echo "<tr>";
+                          $totalGastosEventos = 0;
+                          foreach ($resultadosEventoPP as $fila) {
+                              echo "<tr>";
                                   echo "<td>".$fila['id']."</td>";
-                                  echo "<td><span class='badge bg-success'>".$fila['estado']."</span></td>";
-                                  echo "<td>".$fila['numeroFactura']."</td>";
-                                  echo "<td>".$fila['fechaFactura']."</td>";
-                                  echo "<td>".$fila['proveedor']."</td>";
-                                  echo "<td>$".$fila['totalFactura']."</td>";
-                                  echo "<td>".$fila['creadoPor']."</td>";
+                                  echo "<td>".$fila['folioEP']."</td>";
+                                  echo "<td>".$fila['codigoPlanner']."</td>";
+                                  echo "<td>$".$fila['valor']."</td>";
+                                  echo "<td>".$fila['user']."</td>";
                                   echo "<td>".$fila['stamp']."</td>";
-                              echo "</tr>";	 */
+                                  $totalGastosEventos += $fila['valor'];
+                              echo "</tr>";	
                           }//fin del foreach
                       ?>	<!-- Fin de la ejecucion en PHP -->
                   </tbody>
@@ -162,7 +164,7 @@
                       <th>ID</th>
                       <th>Folio EP</th>
                       <th>Cod. Planner</th>
-                      <th>Valor Asignado</th>
+                      <th><h5><span class="badge bg-success">$<?php echo $totalGastosEventos;?></span></h5></th>
                       <th>Owner</th>
                       <th>Alta</th>
                   </tr>
