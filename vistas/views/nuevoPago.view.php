@@ -57,6 +57,14 @@
                         </div>
                       </div>
 
+                      <!-- Subir Factura --> 
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="filebutton">Subir factura</label>
+                        <div class="col-md-4">
+                          <input id="filebutton" name="filebutton" class="input-file" type="file" required>
+                        </div>
+                      </div>
+
                       <!-- Fecha Factura-->
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="fechaFactura">Fecha</label>  
@@ -73,6 +81,7 @@
                           <select id="proveedor" name="proveedor" class="form-control">
                             <option value="Abasteo MX">Abasteo MX</option>
                             <option value="Office Max">Office Max</option>
+                            <option value="Flores Chiltepec">Flores Chiltepec</option>
                           </select>
                         </div>
                       </div>
@@ -92,8 +101,21 @@
                         <label class="col-md-4 control-label" for="tipo">Tipo</label>
                         <div class="col-md-4">
                           <select id="tipo" name="tipo" class="form-control">
-                            <option value="Administrativo">Administrativo</option>
+                            <option value="Gasto">Gasto</option>
                             <option value="Evento">Evento</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- Cuenta de gastos -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="tipoGasto">Cuenta de gasto</label>
+                        <div class="col-md-4">
+                          <select id="tipoGasto" name="tipoGasto" class="form-control">
+                            <option value="CH - Uniformes">CH - Uniformes</option>
+                            <option value="GASTOS EVENTO">GASTOS EVENTO</option>
+                            <option value="OPERACIONES - Mantenimiento">OPERACIONES - Mantenimiento</option>
+                            <option value="SISTEMAS - Equipos de computo">SISTEMAS - Equipos de computo</option>
                           </select>
                         </div>
                       </div>

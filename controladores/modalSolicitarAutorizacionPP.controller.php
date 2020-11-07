@@ -11,7 +11,7 @@ if($_POST){//SI VENIMOS DE POST
 
     /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
     require("../modelos/modelo.php");
-    solicitarAutorizacionPP($_POST['idPPmodal'],SESSION['user']);
+    solicitarAutorizacionPP($_POST['idPPmodal'],$_SESSION['user']);
     
     //AL TERMINAR MANDAMOS A LA TABLA DE REGISTROS
     header('Location:detallePP.controller.php?id='.$_POST['idPPmodal']);

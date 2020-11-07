@@ -131,7 +131,7 @@
               <h3 class="card-title mt-2">Asignacion de gasto a Evento:</h3>
                 <!-- Modal para agregar gastos a PP -->
                 <?php
-                if($resultados['estado'] == 'Pendiente'){
+                if($resultados['estado'] == 'Pendiente' && $resultados['tipo'] == 'Evento'){
                   require("modalGastoPP.view.php");
                 }
                 ?>
