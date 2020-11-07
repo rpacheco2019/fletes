@@ -233,7 +233,31 @@ function guardarAsignacionPP($idPP,$folioEP,$codigoPlanner,$valorAsignacion,$use
 	}
 }
 
+/* Solicitar autorizacion de un PP */
 
+function solicitarAutorizacionPP($idPP,$user){
+
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
+    try {
+
+         
+        /* DB Info */
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        /* SQL Qry */
+		$statement = $conn->prepare("UPDATE pagoproveedor SET estado='Solicitado',solicitadoPor='$user'
+        WHERE id=$idPP ");
+        
+        /* Execute */
+        $statement->execute();
+		
+	} catch (PDOException $e) {
+        echo "Error Try Mysql: ".$e->getMessage();
+	}
+}
 
 /* Este Qry es el select distinc para sacar el registro mas nuevo de cada vendedora de forma automatica
 SELECT DISTINCT registros.folio AS newfolio,cod,fechaEvento,flete,montaje,USER,max(stamp) FROM registros GROUP BY stamp DESC;

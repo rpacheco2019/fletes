@@ -23,6 +23,14 @@
                 ?>
               </h1>
               <h5>Estado: <?php echo " ".$resultados['estado'];?></h5>
+
+              <!-- Modal de solicitar autorizacion -->
+              <?php
+              if($resultados['estado']=='Pendiente'){
+              require("modalSolicitarAutorizacion.view.php");
+              }
+              ?>
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -121,11 +129,12 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title mt-2">Asignacion de gasto a Evento:</h3>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#exampleModal">
-                  Agregar asignacion
-                </button>
-                <?php require("modalGastoPP.view.php");?>
+                <!-- Modal para agregar gastos a PP -->
+                <?php
+                if($resultados['estado'] == 'Pendiente'){
+                  require("modalGastoPP.view.php");
+                }
+                ?>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
