@@ -53,18 +53,4 @@
 
   });
 
-    /* Script de prueba para bloque de boton en mandar nuevo FYM */
-    window.onload = function(){
-    document.getElementById("key").value = "";
-    document.getElementById('button').disabled = true;
-    }
-
-    /* Habilita el boton enviar en el formulario de nuevo reg. FYM */
-  function success() {
-	 if(document.getElementById("key").value==="") { 
-            document.getElementById('button').disabled = true; 
-        } else { 
-            document.getElementById('button').disabled = false;
-        }
-    }
 </script>

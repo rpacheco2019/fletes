@@ -17,7 +17,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nuevo registro</h1>
+            <h1>Nuevo registro FYM</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -45,9 +45,9 @@
                 <div class="container">
                           <div class="row mt-2">
                               <div class="col-lg">Folio Easy Planner:</div>
-                              <div class="col-lg"><input type="number" class="form-control" min=0 name="folio" onkeyup="success()" id="key"></div>
+                              <div class="col-lg"><input type="number" class="form-control" min=0 name="folio"  id="key" required=""></div>
                               <div class="col-lg">Fecha del evento: </div>
-                              <div class="col-lg"><input type="date" class="form-control" placeholder="D/M/A" name="fecha"></div>
+                              <div class="col-lg"><input type="date" class="form-control" placeholder="D/M/A" name="fecha" required=""></div>
                           </div>
 
                           <div class="row my-4">
@@ -58,11 +58,13 @@
                           </div>
 
                           <div class="row my-4">
+                              <div class="col-lg-3">Viáticos</div>
+                              <div class="col-lg-3"><input type="number" class="form-control" min=0 placeholder="MXN" name="viatico" required=""></div>
                               <div class="col-lg-3">Código Planner: </div>
-                              <div class="col-lg-3"><input type="text" class="form-control" min=0 placeholder="" name="codigo"></div>
+                              <div class="col-lg-3"><input type="text" class="form-control" placeholder="" name="codigo"></div>
                           </div>
 
-                          <input type="submit" id="button" value="Guardar registro" class="btn btn-success mt-3 mb-5">
+                          <input type="submit" id="button" value="Guardar registro" class="btn btn-primary mt-3 mb-5">
                           <hr>
                     </div> 
                 </div>
