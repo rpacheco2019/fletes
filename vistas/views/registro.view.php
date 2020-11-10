@@ -48,6 +48,8 @@
                       <th>Fecha de evento</th>
                       <th>Flete MXN</th>
                       <th>Montaje MXN</th>
+                      <th>Viaticos MXN</th>
+                      <th>Total MXN</th>
                       <th>Owner</th>
                       <th>Subido</th>
                     </tr>
@@ -55,6 +57,7 @@
 
                   <tbody>
                       <?php //Construcción de tabla desde get_allitems - Archivo de funciones devuelve $datos	que pasamos a $resultados
+                          $totalFYM = 0;
                           foreach ($resultados as $fila) {
                               echo "<tr>";
                                   echo "<td>".$fila['folio']."</td>";
@@ -62,6 +65,9 @@
                                   echo "<td>".$fila['fechaEvento']."</td>";
                                   echo "<td>$".$fila['flete']."</td>";
                                   echo "<td>$".$fila['montaje']."</td>";
+                                  echo "<td>$".$fila['viaticos']."</td>";
+                                  $totalFYM = $fila['flete'] + $fila['montaje'] + $fila['viaticos'];
+                                  echo "<td class='bg-primary'>$".$totalFYM."</td>";
                                   echo "<td>".$fila['user']."</td>";
                                   echo "<td>".$fila['stamp']."</td>";
                               echo "</tr>";	
@@ -75,6 +81,8 @@
                       <th>Fecha de evento</th>
                       <th>Flete</th>
                       <th>Montaje</th>
+                      <th>Viaticos</th>
+                      <th>Total MXN</th>
                       <th>Owner</th>
                       <th>Subido</th>
                   </tr>

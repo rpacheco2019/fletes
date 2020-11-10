@@ -17,7 +17,7 @@ if($_POST){//SI VENIMOS DE POST
 
     /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
     require("../modelos/modelo.php");
-    InsertarFolio($_POST['folio'],$_POST['fecha'],$_POST['flete'],$_POST['montaje'],$_SESSION['user'],$_POST['codigo']);
+    InsertarFolio($_POST['folio'],$_POST['fecha'],$_POST['flete'],$_POST['montaje'],$_SESSION['user'],$_POST['codigo'],$_POST['viaticos']);
     header('Location:registro.controller.php');//AL TERMINAR MANDAMOS A LA MISMA PAGINA
 
 }else{// SI NO VIENE DE POST , LE MOSTRAMOS EL FORMULARIO DE CAPTURA

@@ -59,7 +59,7 @@
 
                           <div class="row my-4">
                               <div class="col-lg-3">Viáticos</div>
-                              <div class="col-lg-3"><input type="number" class="form-control" min=0 placeholder="MXN" name="viatico" required=""></div>
+                              <div class="col-lg-3"><input type="number" class="form-control" min=0 placeholder="MXN" name="viaticos" required=""></div>
                               <div class="col-lg-3">Código Planner: </div>
                               <div class="col-lg-3"><input type="text" class="form-control" placeholder="" name="codigo"></div>
                           </div>
