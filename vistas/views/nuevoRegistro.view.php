@@ -30,7 +30,7 @@
     </section>
 
     <!-- Formulario de captura -->
-    <form action="../controladores/NuevoRegistro.controller.php" method="POST">
+    <form action="../controladores/nuevoRegistro.controller.php" method="POST">
 
     <!-- Main content -->
     <section class="content">

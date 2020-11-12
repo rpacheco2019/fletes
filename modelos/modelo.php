@@ -208,7 +208,7 @@ function getEventoPP($id){
 
 }
 
-
+/* Guardamos el la asignacion de gasto de eventos a un PP */
 function guardarAsignacionPP($idPP,$folioEP,$codigoPlanner,$valorAsignacion,$user,$comentario){
 
     global $nombreBase;

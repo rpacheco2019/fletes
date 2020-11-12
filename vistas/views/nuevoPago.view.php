@@ -52,8 +52,11 @@
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="numFactura">Numero de factura</label>  
                         <div class="col-md-4">
-                        <input id="numFactura" name="numFactura" type="text" placeholder="" class="form-control input-md" required="">
-                        <span class="help-block">Utilice el ID o numero de factura que va a desglosar</span>  
+                        <input id="numFactura" name="numFactura" type="text" placeholder="" class="form-control input-md" required="" autocomplete="off">
+                        <span class="help-block">Se despliegan facturas cargadas para evitar duplicados:</span>  
+                          <div id="suggestions" class="alert alert-danger">
+                                <!-- Aqui se generan automaticamente las sugerencias por JS -->
+                          </div>
                         </div>
                       </div>
 
@@ -124,7 +127,7 @@
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="valor">Total de la factura sin IVA</label>  
                         <div class="col-md-4">
-                        <input id="valor" name="valor" type="number" placeholder="" class="form-control input-md" required=""> 
+                        <input id="valor" name="valor" type="number" min=0 step=".01" placeholder="" class="form-control input-md" required=""> 
                         </div>
                       </div>
 

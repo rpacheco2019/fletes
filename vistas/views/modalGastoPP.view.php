@@ -44,7 +44,7 @@
             <div class="form-group">
             <label class="col-lg control-label" for="valorAsignacion">Cantidad</label>  
             <div class="col-lg">
-            <input id="valorAsignacion" name="valorAsignacion" type="text" placeholder="" class="form-control input-md" required="">
+            <input id="valorAsignacion" name="valorAsignacion" type="number" min=0 step=".01" placeholder="" class="form-control input-md" required="">
             <span class="help-block">Valor de esta asignación sin IVA</span>  
             </div>
             </div>

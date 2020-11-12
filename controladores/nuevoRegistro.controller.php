@@ -11,7 +11,7 @@ if($_POST){//SI VENIMOS DE POST
 
     /* CICLAMOS EL FORM SI VIENEN CAMPOS VACIOS */
     if (empty($_POST['folio']) || empty($_POST['fecha']) || $_POST['flete'] =="" || $_POST['montaje']=="") {
-        header('Location:NuevoRegistro.controller.php');
+        header('Location:nuevoRegistro.controller.php');
         die();
     } 
 

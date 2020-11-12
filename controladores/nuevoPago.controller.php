@@ -42,7 +42,6 @@ if($_POST){//SI VENIMOS DE POST
         }
     
      }
-    
 
     /* Fin de carga de archivo factura */
 
