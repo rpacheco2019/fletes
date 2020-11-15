@@ -4,6 +4,7 @@ $nombreBase = "fletes";
 $usuarioBase = "root";
 $passwordBase = "";
 
+/* Obtenemos los registros FYM */
 function getRegistros(){
 
    global $nombreBase;
@@ -27,7 +28,7 @@ function getRegistros(){
 		echo "Error Try Mysql: ".$e->getMessage();
 	}
 }
-
+/* Obtenemos los registros FYM por usuario */
 function getRegistrosByUser($user){
 
     global $nombreBase;
@@ -53,7 +54,7 @@ function getRegistrosByUser($user){
 	}
 }
 
-
+/* Guardamos registro FYM */
 function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod,$viaticos){
 
     global $nombreBase;
@@ -78,6 +79,7 @@ function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod,$viaticos)
 	}
 }
 
+/* Iniciar sesion */
 function login($usuario,$password){
 
     global $nombreBase;
@@ -105,8 +107,8 @@ function login($usuario,$password){
 
 }
 
-
-function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,$tipo,$valor,$concepto,$user){
+/* Guardamos Pago a Proveedor */
+function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,$tipo,$valor,$concepto,$user,$tipoPago,$formaPago,$incluirIVA,$totalConIVA,$cuentaGasto){
 
     global $nombreBase;
     global $usuarioBase;
@@ -119,8 +121,8 @@ function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,
         $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /* SQL Qry */
-		$statement = $conn->prepare("INSERT INTO pagoproveedor (numeroFactura,estado,fechaFactura,fechaPromesa,proveedor,tipo,totalFactura,concepto,creadoPor)
-        VALUES('$numFactura','$estado','$fechaFactura','$fechaPromesa','$proveedor','$tipo',$valor,'$concepto','$user') ");
+		$statement = $conn->prepare("INSERT INTO pagoproveedor (numeroFactura,estado,fechaFactura,fechaPromesa,proveedor,tipo,totalFactura,concepto,creadoPor,tipoPago,formaPago,incluirIVA,totalConIVA,cuentaGasto)
+        VALUES('$numFactura','$estado','$fechaFactura','$fechaPromesa','$proveedor','$tipo',$valor,'$concepto','$user','$tipoPago','$formaPago','$incluirIVA',$totalConIVA,'$cuentaGasto')");
         
         /* Execute */
         $statement->execute();
@@ -130,7 +132,7 @@ function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,
 	}
 }
 
-/* Agregamos los registros de pagos a proveedores */
+/* Obtenemos los registros de pagos a proveedores */
 function registroPago(){
 
     global $nombreBase;
@@ -156,7 +158,7 @@ function registroPago(){
 	}
 }
 
-/* Obtenemos toda la informacion de un PP por ID del mismo */
+/* Obtenemos detalle PP por ID del mismo */
 function getDetallePP($id){
 
     global $nombreBase;
@@ -182,7 +184,7 @@ function getDetallePP($id){
 
 }
 
-/* Obetenemos todos los gastos a evento por numero de PP asociados */
+/* Obetenemos gastos de evento asociados a un PP*/
 function getEventoPP($id){
 
     global $nombreBase;
@@ -208,7 +210,7 @@ function getEventoPP($id){
 
 }
 
-/* Guardamos el la asignacion de gasto de eventos a un PP */
+/* Guardamos gasto de evento asociado a un PP*/
 function guardarAsignacionPP($idPP,$folioEP,$codigoPlanner,$valorAsignacion,$user,$comentario){
 
     global $nombreBase;
@@ -234,7 +236,6 @@ function guardarAsignacionPP($idPP,$folioEP,$codigoPlanner,$valorAsignacion,$use
 }
 
 /* Solicitar autorizacion de un PP */
-
 function solicitarAutorizacionPP($idPP,$user){
 
     global $nombreBase;
@@ -258,6 +259,9 @@ function solicitarAutorizacionPP($idPP,$user){
         echo "Error Try Mysql: ".$e->getMessage();
 	}
 }
+
+
+
 
 /* Este Qry es el select distinc para sacar el registro mas nuevo de cada vendedora de forma automatica
 SELECT DISTINCT registros.folio AS newfolio,cod,fechaEvento,flete,montaje,USER,max(stamp) FROM registros GROUP BY stamp DESC;

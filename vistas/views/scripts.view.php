@@ -87,4 +87,28 @@
                 });
             });
         }); 
-    </script>
+</script>
+
+<!-- Script para calcular el IVA al 16 al momento de agregar un PP -->
+<script>
+  function calcularIVA() {
+    // Obtenemos el elemento checkbox
+    var checkBox = document.getElementById("incluirIVA-0");
+    
+    // Guardamos el valor de factura en una variable
+    var subtotal = document.getElementById("valor").value;
+
+    // Calulamos el valor de la factura con IVA
+    var total = (subtotal * 1.16);
+    //Aplicamos de decimales fixed a los resultados
+    var totalFixed = total.toFixed(2);
+
+    // Aqui se comprueba si el checkbox esta activo
+    if (checkBox.checked == true){
+      document.getElementById("totalConIVA").value = totalFixed;
+    } else{
+      document.getElementById("totalConIVA").value = 0;
+    }
+  }
+  
+</script>
