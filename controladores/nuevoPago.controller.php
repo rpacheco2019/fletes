@@ -1,5 +1,7 @@
 <?php
+include('../xcrud/xcrud.php');
 session_start();
+
 
 /* ESTE FORMULARIO ESTA PROTEGIDO, SI NO INICIO SESION SE MANDA A LOGIN Y SE TERMINA LA EXEC */
 if(!$_SESSION['user']){
@@ -48,11 +50,34 @@ if($_POST){//SI VENIMOS DE POST
     /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
     require("../modelos/modelo.php");
     guardarPago($_POST['numFactura'],$_POST['estado'],$_POST['fechaFactura'],$_POST['promesaPago'],$_POST['proveedor'],$_POST['tipo'],$_POST['valor'],$_POST['concepto'],$_SESSION['user'],$_POST['tipoPago'],$_POST['formaPago'],$_POST['incluirIVA'],$_POST['totalConIVA'],$_POST['cuentaGasto']);
-    //AL TERMINAR MANDAMOS A LA TABLA DE REGISTROS
     header('Location:pagos.controller.php');
 
 }else{// SI NO VIENE DE POST , LE MOSTRAMOS EL FORMULARIO DE CAPTURA
-        require("../vistas/views/nuevoPago.view.php");
-}
+    /* Preguntamos si es admin para mostrar las cuentas todas las cuentas contables */  
+      if($_SESSION['type'] == "admin"){
+         /* Generamos el select para la lista de proveedores */
+         $db=Xcrud_db::get_instance();
+         $db->query("SELECT * FROM proveedores");
+         $proveedores = $db->result();
+
+         /* Geramos el select de las cuentas contables */
+         $db2=Xcrud_db::get_instance();
+         $db2->query("SELECT * FROM cuentascontables");
+         $cuentasContables = $db2->result();
+      }else{
+         /* Generamos el select para la lista de proveedores */
+         $db=Xcrud_db::get_instance();
+         $db->query("SELECT * FROM proveedores");
+         $proveedores = $db->result();
+
+         /* Geramos el select de las cuentas contables */
+         $db2=Xcrud_db::get_instance();
+         $db2->query("SELECT * FROM cuentascontables WHERE departamento = '".$_SESSION['depto']."' OR departamento='TODOS'");
+         $cuentasContables = $db2->result();
+         
+      }
+
+      require("../vistas/views/nuevoPago.view.php");
+}/* Fin POST */
 
 ?>

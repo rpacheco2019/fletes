@@ -22,9 +22,9 @@
             
             <!-- Boton Mandar autorización -->
             <div class="form-group">
-            <label class="col-lg control-label" for="guardarAsignacion">Esta acción no se puede revertir, el PP quedará bloqueado hasta su revisión.</label>
+            <label class="col-lg control-label" for="solicitarAutorizacion">Esta acción no se puede revertir, el PP quedará bloqueado hasta su revisión.</label>
             <div class="col-lg">
-                <button id="guardarAsignacion" name="guardarAsignacion" type="submit"class="btn btn-success">Solicitar Autorización</button>
+                <button id="solicitarAutorizacion" name="solicitarAutorizacion" type="submit"class="btn btn-success">Solicitar Autorización</button>
             </div>
             </div>
             </fieldset>

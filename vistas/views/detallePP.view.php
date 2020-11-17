@@ -1,5 +1,6 @@
 <!-- Header -->
 <?php require("cabecera.view.php");?>
+<?php echo Xcrud::load_css() ?>
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -17,7 +18,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
               <h1>
-                PP Folio:
+                Folio:
                 <?php echo $id;
                 echo " - ".$resultados['numeroFactura'];
                 ?>
@@ -32,12 +33,6 @@
               ?>
 
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li> -->
-            </ol>
-          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -49,33 +44,37 @@
         <!-- Tarjeta de informacion del pago a proveedor -->
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Informacion del pago a proveedor: <?php echo $resultados['tipo'];?></h3>
+              <h3 class="card-title">Informacion del pago a proveedor: [<?php echo $resultados['tipo'];?>]</h3>
             </div>
             <!-- /.card-header -->
 
             <div class="card-body">
-                <div class="row">
-                  <div class="col-lg">
-                    <p>Valor de factura: $<?php echo $resultados['totalFactura'];?></p>
+                <div class="form-row">
+                  <div class="col-md-3">
+                    <p>Factura S/IVA: $<?php echo $resultados['totalFactura'];?></p>
+                    <p>Agregar IVA: <?php echo $resultados['incluirIVA'];?></p>
+                    <p>Factura C/IVA: $<?php echo $resultados['totalConIVA'];?></p>
                   </div>
-                  <div class="col-lg">
+                  <div class="col-md-3">
                     <p>Fecha de la factura: <?php echo $resultados['fechaFactura'];?></p>
+                    <p>Tentativa de pago: <?php echo $resultados['fechaPromesa'];?></p>
                   </div>
-                  <div class="col-lg">
-                    <p>Promesa: <?php echo $resultados['fechaPromesa'];?></p>
-                  </div>
-                  <div class="col-lg">
+                  <div class="col-md-3">
                     <p>Proveedor: <?php echo $resultados['proveedor'];?></p>
                   </div>
-                  <div class="col-lg">
+                  <div class="col-md-3">
                     <p>Creado: <?php echo $resultados['stamp'];?></p>
-                  </div>
-                  <div class="col-lg">
                     <p>Creado por: <?php echo $resultados['creadoPor'];?></p>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
+                  <div class="col-lg">
+                  <p>Cuenta Contable: <?php echo substr($cuentaContable['nombreSubGrupo'],0,2).".".substr($cuentaContable['nombreSubGrupo'],0,2).".".$cuentaContable['nombreCuenta'];?></p>
+                  </div>
+                </div>
+
+                <div class="form-row">
                   <div class="col-lg">
                    <p>Concepto: <?php echo $resultados['concepto'];?></p>
                   </div>
@@ -83,7 +82,6 @@
 
             </div>
             <!-- /.card-body -->
-
           </div>
           <!-- /.card -->
 
@@ -95,29 +93,8 @@
             <!-- /.card-header -->
 
             <div class="card-body">
-                <div class="row">
-                  <div class="col-lg">
-                    <p>Autorizado por: </p>
-                  </div>
-                  <div class="col-lg">
-                    <p>Fecha autorización:</p>
-                  </div>
-                  <div class="col-lg">
-                    <p>Pagado por:</p>
-                  </div>
-                  <div class="col-lg">
-                    <p>Fecha de pago:</p>
-                  </div>
-                  <div class="col-lg">
-                    <p>Cancelado por:</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg">
-                   <p>Fecha de cancelación:</p>
-                  </div>
-                </div>
-
+              <!-- Se genera tabla de autorizaciones por XCRUD -->
+              <?php echo $tableAutorizaciones?>
             </div>
             <!-- /.card-body -->
 
@@ -128,7 +105,7 @@
           <!-- Tarjeta de tabla de registros -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title mt-2">Asignacion de gasto a Evento:</h3>
+              <h3 class="card-title mt-2">+</h3>
                 <!-- Modal para agregar gastos a PP -->
                 <?php
                 if($resultados['estado'] == 'Pendiente' && $resultados['tipo'] == 'Evento'){
@@ -140,45 +117,9 @@
             <div class="card-body">
                 
               <div class="table-responsive">
-                <table id="pagos" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Folio EP</th>
-                      <th>Cod. Planner</th>
-                      <th>Valor Asignado</th>
-                      <th>Owner</th>
-                      <th>Alta</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                      <?php //Construcción de tabla desde get_allitems - Archivo de funciones devuelve $datos	que pasamos a $resultados
-                          $totalGastosEventos = 0;
-                          foreach ($resultadosEventoPP as $fila) {
-                              echo "<tr>";
-                                  echo "<td>".$fila['id']."</td>";
-                                  echo "<td>".$fila['folioEP']."</td>";
-                                  echo "<td>".$fila['codigoPlanner']."</td>";
-                                  echo "<td>$".$fila['valor']."</td>";
-                                  echo "<td>".$fila['user']."</td>";
-                                  echo "<td>".$fila['stamp']."</td>";
-                                  $totalGastosEventos += $fila['valor'];
-                              echo "</tr>";	
-                          }//fin del foreach
-                      ?>	<!-- Fin de la ejecucion en PHP -->
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                      <th>ID</th>
-                      <th>Folio EP</th>
-                      <th>Cod. Planner</th>
-                      <th><h5><span class="badge bg-success">$<?php echo $totalGastosEventos;?></span></h5></th>
-                      <th>Owner</th>
-                      <th>Alta</th>
-                  </tr>
-                  </tfoot>
-                </table>
+                <?php 
+                  echo $xcrud;
+                ?>
               </div>
               <!-- Div table responsive -->
             </div>
@@ -199,8 +140,8 @@
 </div>
 <!-- ./wrapper -->
 
-
 <?php require("scripts.view.php");?><!-- Archivo de Scripts -->
+<?php echo Xcrud::load_js() ?>
 
 </body>
 </html>

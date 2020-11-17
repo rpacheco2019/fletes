@@ -77,9 +77,14 @@
                         <label class="col-md-10 control-label" for="proveedor">Proveedor</label>
                         <div class="col-md-10">
                           <select id="proveedor" name="proveedor" class="form-control">
-                            <option value="Abasteo MX">Abasteo MX</option>
+                            <?php
+                            foreach($proveedores as $fila){
+                              echo "<option value='".$fila['nombre']."'>".$fila['nombre']."</option>";
+                            }
+                            ?>
+                            <!-- <option value="Abasteo MX">Abasteo MX</option>
                             <option value="Office Max">Office Max</option>
-                            <option value="Flores Chiltepec">Flores Chiltepec</option>
+                            <option value="Flores Chiltepec">Flores Chiltepec</option> -->
                           </select>
                         </div>
                       </div>
@@ -123,10 +128,11 @@
                         <label class="col-md-10 control-label" for="cuentaGasto">Cuenta de gasto</label>
                         <div class="col-md-10">
                           <select id="cuentaGasto" name="cuentaGasto" class="form-control">
-                            <option value="CH - Uniformes">CH - Uniformes</option>
-                            <option value="GASTOS EVENTO">GASTOS EVENTO</option>
-                            <option value="OPERACIONES - Mantenimiento">OPERACIONES - Mantenimiento</option>
-                            <option value="SISTEMAS - Equipos de computo">SISTEMAS - Equipos de computo</option>
+                            <?php
+                              foreach($cuentasContables as $fila){
+                                echo "<option value=".$fila['id'].">".substr($fila['nombreGrupo'],0,2).".".substr($fila['nombreSubGrupo'],0,2).".".$fila['nombreCuenta']."</option>";
+                              }
+                            ?>
                           </select>
                         </div>
                       </div>

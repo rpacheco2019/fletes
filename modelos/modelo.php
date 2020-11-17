@@ -108,7 +108,7 @@ function login($usuario,$password){
 }
 
 /* Guardamos Pago a Proveedor */
-function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,$tipo,$valor,$concepto,$user,$tipoPago,$formaPago,$incluirIVA,$totalConIVA,$cuentaGasto){
+function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,$tipo,$valor,$concepto,$user,$tipoPago,$formaPago,$incluirIVA,$totalConIVA,$idCuentaContable){
 
     global $nombreBase;
     global $usuarioBase;
@@ -121,8 +121,8 @@ function guardarPago($numFactura,$estado,$fechaFactura,$fechaPromesa,$proveedor,
         $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /* SQL Qry */
-		$statement = $conn->prepare("INSERT INTO pagoproveedor (numeroFactura,estado,fechaFactura,fechaPromesa,proveedor,tipo,totalFactura,concepto,creadoPor,tipoPago,formaPago,incluirIVA,totalConIVA,cuentaGasto)
-        VALUES('$numFactura','$estado','$fechaFactura','$fechaPromesa','$proveedor','$tipo',$valor,'$concepto','$user','$tipoPago','$formaPago','$incluirIVA',$totalConIVA,'$cuentaGasto')");
+		$statement = $conn->prepare("INSERT INTO pagoproveedor (numeroFactura,estado,fechaFactura,fechaPromesa,proveedor,tipo,totalFactura,concepto,creadoPor,tipoPago,formaPago,incluirIVA,totalConIVA,idCuentaContable)
+        VALUES('$numFactura','$estado','$fechaFactura','$fechaPromesa','$proveedor','$tipo',$valor,'$concepto','$user','$tipoPago','$formaPago','$incluirIVA',$totalConIVA,$idCuentaContable)");
         
         /* Execute */
         $statement->execute();
@@ -147,6 +147,32 @@ function registroPago(){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /* SQL Qry */
 		$statement = $conn->prepare("SELECT * FROM pagoproveedor");
+        
+        /* Execute */
+        $statement->execute();
+        $datos = $statement->fetchAll();
+        return $datos;
+		
+	} catch (PDOException $e) {
+        echo "Error Try Mysql: ".$e->getMessage();
+	}
+}
+
+/* Obtemos los registros de pagos a proveedores por USER */
+function registroPagoByUser($user){
+
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
+    try {
+
+         
+        /* DB Info */
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        /* SQL Qry */
+		$statement = $conn->prepare("SELECT * FROM pagoproveedor WHERE creadoPor ='".$user."'");
         
         /* Execute */
         $statement->execute();
@@ -260,6 +286,31 @@ function solicitarAutorizacionPP($idPP,$user){
 	}
 }
 
+/* Obetenemos gastos de evento asociados a un PP*/
+function getCuentaContable($id){
+
+    global $nombreBase;
+    global $usuarioBase;
+    global $passwordBase;
+
+    try {
+
+        /* DB Info */
+        $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        /* SQL Qry */
+		$statement = $conn->prepare("SELECT * FROM cuentascontables WHERE id=".$id."");
+        
+        /* Execute */
+        $statement->execute();
+        $datos = $statement->fetch();
+        return $datos;
+        
+	} catch (PDOException $e) {
+		echo "Error Try Mysql: ".$e->getMessage();
+	}
+
+}
 
 
 

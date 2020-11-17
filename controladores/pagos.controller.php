@@ -14,7 +14,7 @@ if($_POST){//SI VENIMOS DE POST
     require("../modelos/modelo.php");
     if($_SESSION['type'] == 'user'){
         $user = $_SESSION['user'];
-        $resultados = registroPago();
+        $resultados = registroPagoByUser($user);
         require("../vistas/views/pagos.view.php");
     }else{
         $resultados = registroPago();

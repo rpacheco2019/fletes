@@ -45,10 +45,13 @@
                     <tr>
                       <th>Folio</th>
                       <th>Estado</th>
+                      <th>Tipo</th>
                       <th>Factura</th>
                       <th>Fecha F.</th>
                       <th>Proveedor</th>
-                      <th>Total</th>
+                      <th>Total S/IVA</th>
+                      <th>IVA</th>
+                      <th>Total C/IVA</th>
                       <th>Owner</th>
                       <th>Alta</th>
                     </tr>
@@ -59,11 +62,28 @@
                           foreach ($resultados as $fila) {
                               echo "<tr>";
                                   echo "<td><a href='detallePP.controller.php?id=".$fila['id']."'>".$fila['id']."</a></td>";
-                                  echo "<td><span class='badge bg-success'>".$fila['estado']."</span></td>";
+                                  if($fila['estado'] == "Pendiente"){
+                                    echo "<td><span class='badge bg-primary'>".$fila['estado']."</span></td>";
+                                  }elseif($fila['estado'] == "Solicitado"){
+                                    echo "<td><span class='badge bg-warning'>".$fila['estado']."</span></td>";
+                                  }elseif($fila['estado'] == "Cancelado"){
+                                    echo "<td><span class='badge bg-danger'>".$fila['estado']."</span></td>";
+                                  }elseif($fila['estado'] == "Autorizado"){
+                                    echo "<td><span class='badge bg-success'>".$fila['estado']."</span></td>";
+                                  }
+                                  echo "<td>".$fila['tipo']."</td>";
                                   echo "<td>".$fila['numeroFactura']."</td>";
                                   echo "<td>".$fila['fechaFactura']."</td>";
                                   echo "<td>".$fila['proveedor']."</td>";
                                   echo "<td>$".$fila['totalFactura']."</td>";
+                                  if($fila['totalConIVA'] > 0){
+                                    $IVA = $fila['totalConIVA'] - $fila['totalFactura'];
+                                    echo "<td>$".$IVA."</td>";
+                                  }else{
+                                    $IVA = 0;
+                                    echo "<td>$".$IVA."</td>";
+                                  }
+                                  echo "<td>$".$fila['totalConIVA']."</td>";
                                   echo "<td>".$fila['creadoPor']."</td>";
                                   echo "<td>".$fila['stamp']."</td>";
                               echo "</tr>";	
@@ -74,10 +94,13 @@
                   <tr>
                       <th>Folio</th>
                       <th>Estado</th>
+                      <th>Tipo</th>
                       <th>Factura</th>
                       <th>Fecha F.</th>
                       <th>Proveedor</th>
-                      <th>Total</th>
+                      <th>Total S/IVA</th>
+                      <th>IVA</th>
+                      <th>Total C/IVA</th>
                       <th>Owner</th>
                       <th>Alta</th>
                   </tr>

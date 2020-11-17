@@ -23,6 +23,7 @@ if($_POST){
     if(!empty($resultado)){
         $_SESSION['user'] = $resultado['user'];
         $_SESSION['type'] = $resultado['type'];
+        $_SESSION['depto'] = $resultado['departamento'];
         header('Location:registro.controller.php');
     }else{
         $error = "Usuario o password incorrectos";
