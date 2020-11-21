@@ -17,21 +17,17 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-              <h1>
+              <h5>
                 Folio:
-                <?php echo $id;
-                echo " - ".$resultados['numeroFactura'];
-                ?>
-              </h1>
-              <h5>Estado: <?php echo " ".$resultados['estado'];?></h5>
-
+                <?php echo $id;?> -
+                Factura: <?php echo " ".$resultados['numeroFactura'];?>
+              </h5>
               <!-- Modal de solicitar autorizacion -->
               <?php
               if($resultados['estado']=='Pendiente'){
               require("modalSolicitarAutorizacion.view.php");
               }
               ?>
-
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -51,23 +47,25 @@
             <div class="card-body">
                 <div class="form-row">
                   <div class="col-md-3">
-                    <p>Factura S/IVA: $<?php echo $resultados['totalFactura'];?></p>
+                    <p>Subtotal: $<?php echo $resultados['totalFactura'];?></p>
                     <p>Agregar IVA: <?php echo $resultados['incluirIVA'];?></p>
-                    <p>Factura C/IVA: $<?php echo $resultados['totalConIVA'];?></p>
+                    <p>Total: $<?php echo $resultados['totalConIVA'];?></p>
                   </div>
                   <div class="col-md-3">
                     <p>Fecha de la factura: <?php echo $resultados['fechaFactura'];?></p>
                     <p>Tentativa de pago: <?php echo $resultados['fechaPromesa'];?></p>
+                    <p>Estado: <?php echo $resultados['estado'];?></p>
                   </div>
                   <div class="col-md-3">
                     <p>Proveedor: <?php echo $resultados['proveedor'];?></p>
+                    <p>Ver factura: <a href="<?php echo $resultados['imgPath'];?>">Factura</a></p>
                   </div>
                   <div class="col-md-3">
                     <p>Creado: <?php echo $resultados['stamp'];?></p>
                     <p>Creado por: <?php echo $resultados['creadoPor'];?></p>
                   </div>
                 </div>
-
+                <hr>
                 <div class="form-row">
                   <div class="col-lg">
                   <p>Cuenta Contable: <?php echo substr($cuentaContable['nombreSubGrupo'],0,2).".".substr($cuentaContable['nombreSubGrupo'],0,2).".".$cuentaContable['nombreCuenta'];?></p>
@@ -101,7 +99,6 @@
           </div>
           <!-- /.card -->
 
-
           <!-- Tarjeta de tabla de registros -->
           <div class="card">
             <div class="card-header">
@@ -115,7 +112,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                
+              <!-- Tabla de asignaciones con XCRUD -->
               <div class="table-responsive">
                 <?php 
                   echo $xcrud;

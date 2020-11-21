@@ -91,6 +91,11 @@
 
 <!-- Script para calcular el IVA al 16 al momento de agregar un PP -->
 <script>
+
+  $(document).ready(function(){
+    $( "#incluirIVA-0" ).prop( "checked", false );
+  })
+    
   function calcularIVA() {
     // Obtenemos el elemento checkbox
     var checkBox = document.getElementById("incluirIVA-0");
@@ -109,6 +114,7 @@
     } else{
       document.getElementById("totalConIVA").value = 0;
     }
+    
   }
   
 </script>

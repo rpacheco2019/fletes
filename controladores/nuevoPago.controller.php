@@ -17,6 +17,8 @@ if($_POST){//SI VENIMOS DE POST
         die();
     } 
 
+    $imgPath = "#"; //Por si no cargan imagen!!
+
     /* Carga de archivo factura */
     if(isset($_FILES['btnSubirFactura'])){
         $errors= array();
@@ -32,15 +34,16 @@ if($_POST){//SI VENIMOS DE POST
            $errors[]="No se permite esa extension, solo jpg,jpeg, png o pdf.";
         }
         
-        if($file_size > 2097152){
+        if($file_size > 3097152){
            $errors[]='Archivo debe de pesar menos de 2mb';
         }
         
-        if(empty($errors)==true){
-           move_uploaded_file($file_tmp,"../facturas/".$file_name);
-           echo "Success";
+        if(empty($errors)==true){  
+           $imgPath = "../facturas/".date("dmY His")."  ".$file_name;       
+           move_uploaded_file($file_tmp,$imgPath);
         }else{
            print_r($errors);
+           die();
         }
     
      }
@@ -49,7 +52,7 @@ if($_POST){//SI VENIMOS DE POST
 
     /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
     require("../modelos/modelo.php");
-    guardarPago($_POST['numFactura'],$_POST['estado'],$_POST['fechaFactura'],$_POST['promesaPago'],$_POST['proveedor'],$_POST['tipo'],$_POST['valor'],$_POST['concepto'],$_SESSION['user'],$_POST['tipoPago'],$_POST['formaPago'],$_POST['incluirIVA'],$_POST['totalConIVA'],$_POST['cuentaGasto']);
+    guardarPago($_POST['numFactura'],$_POST['estado'],$_POST['fechaFactura'],$_POST['promesaPago'],$_POST['proveedor'],$_POST['tipo'],$_POST['valor'],$_POST['concepto'],$_SESSION['user'],$_POST['tipoPago'],$_POST['formaPago'],$_POST['incluirIVA'],$_POST['totalConIVA'],$_POST['cuentaGasto'],$imgPath);
     header('Location:pagos.controller.php');
 
 }else{// SI NO VIENE DE POST , LE MOSTRAMOS EL FORMULARIO DE CAPTURA

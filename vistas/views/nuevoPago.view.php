@@ -57,7 +57,7 @@
 
                       <!-- Subir factura -->
                       <div class="form-group">                    
-                        <label class="col-md-10 control-label" for="btnSubirFactura">Subir factura</label>
+                        <label class="col-md-10 control-label" for="btnSubirFactura">Subir factura (PDF,JPG,JPEG. MAX 2 MB)</label>
                         <div class="col-md-10">
                           <input id="btnSubirFactura" name="btnSubirFactura" class="input-file" type="file" required>
                         </div>
