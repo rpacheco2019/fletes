@@ -148,7 +148,8 @@ function after_update_test($pd, $pm, $xc)
     $xc->search = 0;
 }
 
-function after_upload_test($field, &$filename, $file_path, $upload_config, $this)
+/* function after_upload_test($field, &$filename, $file_path, $upload_config, $this)
 {
     $filename = 'bla-bla-bla';
-}
+} */
+

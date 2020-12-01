@@ -68,16 +68,20 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="../controladores/nuevoPago.controller.php" class="nav-link">
-                
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Nuevo Pago</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../controladores/pagos.controller.php" class="nav-link">
-                
                   <i class="fas fa-book nav-icon"></i>
                   <p>Ver Pagos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../controladores/panelAutorizaciones.controller.php" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>Autorizar</p>
                 </a>
               </li>
             <!--   <li class="nav-item">
@@ -89,36 +93,26 @@
             </ul>
           </li>
 
-          <!-- LI ODC -->
+          <?php if($_SESSION['user'] == 'rpacheco'){ ?>
+          <!-- LI Pago Menu Admin -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
+              <i class="nav-icon fas fa-user-shield"></i>
               <p>
-                Orden de compra
+                Admin
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-plus-circle nav-icon"></i>
-                  <p>Nueva ODC</p>
+                <a href="../controladores/usuarios.controller.php" class="nav-link">
+                  <i class="fas fa-tools nav-icon"></i>
+                  <p>Tablas Maestras</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-book nav-icon"></i>
-                  <p>Ver ODCs</p>
-                </a>
-              </li>
-            <!--   <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-calculator nav-icon"></i>
-                  <p>Calculador</p>
-                </a>
-              </li> -->
             </ul>
           </li>
+          <?php } ?>
 
         </ul>
       </nav>
