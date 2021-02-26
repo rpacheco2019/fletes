@@ -1,3 +1,5 @@
+<!-- Agregar nuevo registro FYM -->
+
 <?php
 session_start();
 
@@ -10,14 +12,14 @@ if(!$_SESSION['user']){
 if($_POST){//SI VENIMOS DE POST
 
     /* CICLAMOS EL FORM SI VIENEN CAMPOS VACIOS */
-    if (empty($_POST['folio']) || empty($_POST['fecha']) || $_POST['flete'] =="" || $_POST['montaje']=="") {
+    if (empty($_POST['folio']) || empty($_POST['fecha']) || $_POST['flete'] =="" || $_POST['montaje']=="" || $_POST['flores']=="") {
         header('Location:nuevoRegistro.controller.php');
         die();
     } 
 
     /* LLAMAMOS LOS MODELOS SQL PARA INSERTAR EL FOLIO + EL USUARIO SESION LOGUEADO */
     require("../modelos/modelo.php");
-    InsertarFolio($_POST['folio'],$_POST['fecha'],$_POST['flete'],$_POST['montaje'],$_SESSION['user'],$_POST['codigo'],$_POST['viaticos']);
+    InsertarFolio($_POST['folio'],$_POST['fecha'],$_POST['flete'],$_POST['montaje'],$_SESSION['user'],$_POST['codigo'],$_POST['viaticos'],$_POST['flores']);
     header('Location:registro.controller.php');//AL TERMINAR MANDAMOS A LA MISMA PAGINA
 
 }else{// SI NO VIENE DE POST , LE MOSTRAMOS EL FORMULARIO DE CAPTURA

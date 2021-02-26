@@ -49,6 +49,7 @@
                       <th>Flete MXN</th>
                       <th>Montaje MXN</th>
                       <th>Viaticos MXN</th>
+                      <th>Flores MXN</th>
                       <th>Total MXN</th>
                       <th>Owner</th>
                       <th>Subido</th>
@@ -66,7 +67,8 @@
                                   echo "<td>$".$fila['flete']."</td>";
                                   echo "<td>$".$fila['montaje']."</td>";
                                   echo "<td>$".$fila['viaticos']."</td>";
-                                  $totalFYM = $fila['flete'] + $fila['montaje'] + $fila['viaticos'];
+                                  echo "<td>$".$fila['flores']."</td>";
+                                  $totalFYM = $fila['flete'] + $fila['montaje'] + $fila['viaticos'] + $fila['flores'];
                                   echo "<td class='bg-primary'>$".$totalFYM."</td>";
                                   echo "<td>".$fila['user']."</td>";
                                   echo "<td>".$fila['stamp']."</td>";
@@ -82,6 +84,7 @@
                       <th>Flete</th>
                       <th>Montaje</th>
                       <th>Viaticos</th>
+                      <th>Flores MXN</th>
                       <th>Total MXN</th>
                       <th>Owner</th>
                       <th>Subido</th>

@@ -38,7 +38,8 @@
           <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Por favor llene los datos del formulario:</h3>
+                <h3 class="card-title">Por favor llene los datos del formulario:</h3><br>
+                <p>Puedes rellenar con 0.0 en caso no requerir presupuesto para algún concepto.</p><i class="fas fa-paw"></i>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -62,6 +63,11 @@
                               <div class="col-lg-3"><input type="number" class="form-control" min=0 placeholder="MXN" name="viaticos" required=""></div>
                               <div class="col-lg-3">Código Planner: </div>
                               <div class="col-lg-3"><input type="text" class="form-control" placeholder="" name="codigo"></div>
+                          </div>
+
+                          <div class="row my-4">
+                              <div class="col-lg-3">Flores</div>
+                              <div class="col-lg-3"><input type="number" class="form-control" min=0 placeholder="MXN" name="flores" required=""></div>
                           </div>
 
                           <input type="submit" id="button" value="Guardar registro" class="btn btn-primary mt-3 mb-5">

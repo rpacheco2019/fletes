@@ -1,3 +1,5 @@
+<!-- Ver registros FYM -->
+
 <?php
 session_start();
 
@@ -10,8 +12,9 @@ if(!$_SESSION['user']){
 if($_POST){//SI VENIMOS DE POST
 
     
-}else{// SI NO VIENE DE POST , CONSULTAMOS TODOS SUS REGISTROS QUE COINCIDAN CON LA VARIABLE DE SESION USER
+}else{// SI NO VIENE DE POST , OBTENEMOS USERTYPE Y MOSTRAMOS TODOS O SOLO SUS REGISTROS
     require("../modelos/modelo.php");
+
     if($_SESSION['type'] == 'user'){
         $user = $_SESSION['user'];
         $resultados = getRegistrosByUser($user);

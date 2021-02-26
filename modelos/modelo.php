@@ -55,7 +55,7 @@ function getRegistrosByUser($user){
 }
 
 /* Guardamos registro FYM */
-function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod,$viaticos){
+function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod,$viaticos,$flores){
 
     global $nombreBase;
     global $usuarioBase;
@@ -68,8 +68,8 @@ function InsertarFolio($folio,$fechaEvento,$flete,$montaje,$user,$cod,$viaticos)
         $conn = new PDO('mysql:host=localhost;dbname='.$nombreBase,$usuarioBase,$passwordBase);
         
         /* SQL Qry */
-		$statement = $conn->prepare("INSERT INTO registros (folio,fechaEvento,flete,montaje,user,cod,viaticos)
-        VALUES($folio,'$fechaEvento',$flete,$montaje,'$user','$cod',$viaticos) ");
+		$statement = $conn->prepare("INSERT INTO registros (folio,fechaEvento,flete,montaje,user,cod,viaticos,flores)
+        VALUES($folio,'$fechaEvento',$flete,$montaje,'$user','$cod',$viaticos,$flores) ");
         
         /* Execute */
 		$statement->execute();
