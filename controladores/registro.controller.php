@@ -1,5 +1,3 @@
-<!-- Ver registros FYM -->
-
 <?php
 session_start();
 

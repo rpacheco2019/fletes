@@ -1,5 +1,3 @@
-<!-- Agregar nuevo registro FYM -->
-
 <?php
 session_start();
 
